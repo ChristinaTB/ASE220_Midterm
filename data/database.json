@@ -1,0 +1,52 @@
+[
+	{
+	  "firstname": "John",
+	  "lastname": "Doe",
+	  "title": "Cruzin'",
+	  "car_make": "Lamborghini",
+	  "car_model": "aventador",
+	  "car_year": "2021",
+	  "blog_content": "Just got the new lamborghini. Some pros and cons. Pros: Nice car, exotic. Con: gas milage, hurt the pocket book",
+	  "picture": "https://images5.alphacoders.com/982/thumb-1920-982211.jpg"
+	},
+	{
+	  "firstname": "Paul",
+	  "lastname": "West",
+	  "title": "Dreamin'",
+	  "car_make": "Aston Martin",
+	  "car_model": "Vantage",
+	  "car_year": "2021",
+	  "blog_content": "Living the dream, making it count",
+	  "picture": "https://static.tcimg.net/vehicles/primary/cde12327ce54f2f4/2020-Aston_Martin-Vantage-white-full_color-driver_side_front_quarter.png"
+	},
+	{
+	  "firstname": "Ryan",
+	  "lastname": "North",
+	  "title": "Livin my best life'",
+	  "car_make": "Rolls Royce",
+	  "car_model": "Wraith",
+	  "car_year": "2021",
+	  "blog_content": "Got that money tree",
+	  "picture": "https://images.hgmsites.net/hug/rolls-royce-wraith_100702148_h.jpg"
+	},
+	{
+	  "firstname": "Dan",
+	  "lastname": "East",
+	  "title": "2FAST2FURIOUS'",
+	  "car_make": "Chevrolet",
+	  "car_model": "Corvette",
+	  "car_year": "2021",
+	  "blog_content": "The need for speed",
+	  "picture": "https://www.carscoops.com/wp-content/uploads/2020/02/2020-chevrolet-corvette-c8.jpg"
+	},
+	{
+	  "firstname": "Bob",
+	  "lastname": "Compass",
+	  "title": "Waaayyy 2FAST2FURIOUS'",
+	  "car_make": "Ferrari",
+	  "car_model": "SF90 Spider",
+	  "car_year": "2021",
+	  "blog_content": "Its a ferrari, should I say more",
+	  "picture": "https://www.topgear.com/sites/default/files/styles/16x9_1280w/public/cars-car/image/2020/07/dsc09285.jpg?itok=P_SK3_yI"
+	}
+  ]
