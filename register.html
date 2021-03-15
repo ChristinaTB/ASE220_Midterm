@@ -8,10 +8,10 @@
     <body>
 
         <nav class="navbar navbar-dark bg-dark" style = "min-width: 500px;">
-            <a href="index.html" style = "text-decoration: none;"><h1 style = "color:whitesmoke; margin-left: 20px">Vroom</h1></a>
+            <a href="/" style = "text-decoration: none;"><h1 style = "color:whitesmoke; margin-left: 20px">Vroom</h1></a>
              <div style = "margin-right:30px">
-                <button type="button" class="btn btn-outline-light">Sign In</button>
-             <a href= "register.html"><button type="button" class="btn btn-outline-light">Sign up</button></a>
+                <a href="/signin"  class="btn btn-outline-light" role="button" aria-pressed="true">Sign In</a>
+             <a href= "/register.html"><button type="button" class="btn btn-outline-light">Sign up</button></a>
              </div>
            </nav>
  
@@ -85,14 +85,15 @@
               
                   $.ajax({
                       type: "POST",
-                      url: 'API/users',
+                      url: '/API/users',
                       contentType: "application/json",
-                      data: JSON.stringify(FormData),
+                      data: JSON.stringify(f),
                       success: function(output, status, xhr)
                       {
                           console.log(xhr);
                           console.log(xhr.getResponseHeader("Location"));
-                          window.location.href = "index.html";
+                          alert("Welcome to Vroom,"+ f.firstname);
+                          window.location.href = "/";
                       }
                       
                   });

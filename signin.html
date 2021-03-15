@@ -8,6 +8,13 @@
 
 
 
+        <nav class="navbar navbar-dark bg-dark" style = "min-width: 500px;">
+            <a href="/" style = "text-decoration: none;"><h1 style = "color:whitesmoke; margin-left: 20px">Vroom</h1></a>
+             <div style = "margin-right:30px">
+                <a href="/signin"  class="btn btn-outline-light" role="button" aria-pressed="true">Sign In</a>
+             <a href= "/register.html"><button type="button" class="btn btn-outline-light">Sign up</button></a>
+             </div>
+           </nav>
 
         <div class = "container">
             <div class = "row">
@@ -53,13 +60,26 @@ $(document).on('submit','#signinForm', function(e){
 
     $.ajax({
         type:'POST',
-        url: 'auth/API/signin',
+        url: '/auth/API/signin',
         contentType: 'application/json',
         data: JSON.stringify(formData),
         success: function(output, status, requestData){
             console.log(output);
+            if(output.status === 1)
+            {
+                alert("Welcome back" ); 
+                window.location.href = "/private";
+            }
+            if(output.status === -1)
+            {
+              alert("Error, please try again");  
+            }
+            
+            
         },
+        
     });
+ 
     return;
 });
 </script>

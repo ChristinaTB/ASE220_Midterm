@@ -12,39 +12,39 @@ app.use(express.static(path.join(__dirname,'static_files')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
-// app.get('/',function(req,res,next){
-// 	fs.readFile('index.html',function(err,data){
-// 		res.send(data.toString());
-// 	});
-// });
+app.get('/',function(req,res,next){
+	fs.readFile('index.html',function(err,data){
+		res.send(data.toString());
+	});
+});
 
-// app.get('/API',function(req,res,next){
-// 	fs.readFile('data/database.json',function(err,data){
-// 		res.json(data.toString());
-// 	});
-// });
+app.get('/API',function(req,res,next){
+	fs.readFile('data/database.json',function(err,data){
+		res.json(data.toString());
+	});
+});
 
-// app.post('/API',function(req,res,next){
-// 	fs.writeFile('data/'+Math.random().toString(36).substring(8)+'.json',JSON.stringify(req.body),function(err,data){
-// 		res.json(req.body);
-// 	});
-// });
+app.post('/API',function(req,res,next){
+	fs.writeFile('data/'+Math.random().toString(36).substring(8)+'.json',JSON.stringify(req.body),function(err,data){
+		res.json(req.body);
+	});
+});
 
-// app.put('/API',function(req,res,next){
-// 	fs.writeFile('data/1.json',JSON.stringify(req.body),function(err,data){
-// 		res.json(req.body);
-// 	});
-// });
+app.put('/API',function(req,res,next){
+	fs.writeFile('data/1.json',JSON.stringify(req.body),function(err,data){
+		res.json(req.body);
+	});
+});
 	
-// app.delete('/API',function(req,res,next){
-// 	fs.unlink('data/1.json',function(err){
-// 		if(err) console.log(err);
-// 		res.json({
-// 			'status':1,
-// 			'message':'file deleted'
-// 		})
-// 	});
-// });
+app.delete('/API',function(req,res,next){
+	fs.unlink('data/1.json',function(err){
+		if(err) console.log(err);
+		res.json({
+			'status':1,
+			'message':'file deleted'
+		})
+	});
+});
 
 // app.get('/',function(req,res,next){
 // 	fs.readFile('index.html',function(err,data){
@@ -55,26 +55,27 @@ app.use(bodyParser.urlencoded({extended:false}));
 // {
 // 	console.log(Date.now());
 // 	console.log(res);
-// 	next();
+// 	next();/
 // })
 
 // app.get('/', function(req,res,next){
 // 	console.log('index');
 // 	fs.readFile('index.html', function(err,data){
 // 		res.send(data.toString());
-// 		res.end();
+		
 // 	})
 
 // });
 
 
-app.get('/index.html',function(req,res,next){
+app.get('/',function(req,res,next){
 	fs.readFile('index.html',function(err,data){
 		res.send(data.toString());
+		res.end();
 	});
 });
 
-app.get('/article.html',function(req,res,next){
+app.get('/article',function(req,res,next){
 	fs.readFile('article.html' ,function(err,data){
 		res.send(data.toString());
 	});

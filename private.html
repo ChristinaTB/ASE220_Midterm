@@ -8,10 +8,10 @@
     <body>
 
         <nav class="navbar navbar-dark bg-dark" style = "min-width: 500px;">
-            <a href="index.html" style = "text-decoration: none;"><h1 style = "color:whitesmoke; margin-left: 20px">Vroom</h1></a>
+            <a href="/" style = "text-decoration: none;"><h1 style = "color:whitesmoke; margin-left: 20px">Vroom</h1></a>
              <div style = "margin-right:30px">
-                <a href="signin.html"  class="btn btn-outline-light" role="button" aria-pressed="true">Sign In</a>
-             <a href= "register.html"><button type="button" class="btn btn-outline-light">Sign up</button></a>
+                <a href="/signin"  class="btn btn-outline-light" role="button" aria-pressed="true">Sign In</a>
+             <a href= "/register.html"><button type="button" class="btn btn-outline-light">Sign up</button></a>
              </div>
            </nav>
  
@@ -19,8 +19,36 @@
             <div class = "row">
                 <div class = "card">
                     <div class = "row">
-                        <h1 class = "text-center display-1">Welcome to private</h1>
-                        
+                        <h1 class = "text-center display-1">Welcome to Your Private Page</h1>
+                        <div class = 'container-fluid'>
+                            <div class ="row">
+                                <div class = "col display-1 text-center" id = "title" style = "color: white; font-weight: lighter; ">
+                                </div>
+                            </div>
+                             <div class = "row mt-5">
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                      <div class="col-md-6">
+                                        <img id = "picture" src="..." alt="..." style = "width: 100%; height: 500px;" />
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="card-body">
+                                          
+                                          <h5 class="card-title text-center" id = "car_make" style = "font-size: 50pt; font-weight: 100; text-decoration: underline;"></h5>
+                                          <h5 class="card-title text-center" id = "car_model" style = "font-size: 30pt; font-weight: 100;"></h5>
+                                          <h5 class="card-title text-center" id = "car_year"> </h5>
+                                          <div class = "text-center"><span>Author by: </span><span class="card-text" id = "firstname"></span>
+                                          <span class="card-text" id = "lastname"></span></div>
+                                          <p class="card-text text-center"  id = "blog_content"></p>
+                                          
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                             </div>
+                         </div>
+                    
+                    
                     </div>
               
                 </div>
@@ -39,7 +67,65 @@
     
     
     <script>
+        
+  function findGetParameter(parameterName)
+    {
+        var result = null,
+        temp = [];
+        location.search
+            .substr(1)
+            .split("&")
+            .forEach(function (item)
+            {
+                tmp = item.split('=');
+                if (tmp[0] === parameterName) 
+                result = decodeURIComponent(tmp[1]);
+            });
+            return result;
+    }
+    console.log(findGetParameter('index'));
+
+        $.getJSON('https://jsonblob.com/api/jsonBlob/2c155f5d-7afb-11eb-8dd6-6f7957243c71', function(data){
+        var  index = findGetParameter('index');
+        $('#firstname').text(data[index].firstname);
+        $('#lastname').text(data[index].lastname);
+        $('#title').text(data[index].title);
+        $('#car_make').text(data[index].car_make);
+        $('#car_model').text(data[index].car_model);
+        $('#car_year').text(data[index].car_year);
+        $('#blog_content').text(data[index].blog_content);
+        $('#picture').attr('src', data[index].picture);
+ 
+
+    });
+
+
+    $.getJSON('https://jsonblob.com/api/jsonBlob/2c155f5d-7afb-11eb-8dd6-6f7957243c71', function(data)
+            {
+                //console.log(data);
+                //to loop through the menu
+                // for(var i = 0; i <data.length;i++){
      
+                   //to add items to the menu
+                for(let i=0; i < users.length; i++)
+                {
+                 
+                        //issue displays all instead of separtating links
+
+                        $('#private_page').append('<div class = "list-group"><div class="list-group-item list-group-item-action " style = "margin-left: auto; margin-right: auto; border: 3em double black; border-radius: 7em;"><a href= "article.html?index='+ i +'"<div style  = "margin-left:auto; margin-right:auto"><h5 class="mb-1 w-100 text-center">'+ data[i].car_make +' '+  data[i].car_model +'<br><a href="edit.html?index='+ i +'">Edit</a><br><img src="'+ data[i].picture +'"style = "height:250px; width: 400px" /></h5></div></a></div></div>')
+
+                    
+                   
+                }
+                    
+
+     
+             
+                $('#background-TopImage').html('<img src="'+ data[0].picture +'"style = "height:auto; width: 100%"" />');
+            });
+
+
+
 
     </script>
     

@@ -30,18 +30,23 @@ function checkIfUserIsAdmin(req,res,next){
 	}
 }
 
-app.get('/index',function(req,res,next){
+app.get('/',function(req,res,next){
 	fs.readFile('index.html',function(err,data){
 		res.send(data.toString());
 	});
 });
 
-app.get('/article',function(req,res,next){
+app.get('/article.html',function(req,res,next){
 	fs.readFile('article.html',function(err,data){
 		res.send(data.toString());
 	});
 });
 
+app.get('/register.html',function(req,res,next){
+	fs.readFile('register.html',function(err,data){
+		res.send(data.toString());
+	});
+});
 
 app.get('/private',checkIfUserIsSignedIn,function(req,res,next){
 	fs.readFile('private.html',function(err,data){
@@ -50,17 +55,37 @@ app.get('/private',checkIfUserIsSignedIn,function(req,res,next){
 });
 
 app.get('/admin',checkIfUserIsSignedIn,checkIfUserIsAdmin,function(req,res,next){
-	fs.readFile('admin.html',function(err,data){
+	fs.readFile('admin/index.html',function(err,data){
 		res.send(data.toString());
 	});
 });
 
 
-app.get('/auth/signin',function(req,res,next){
+app.get('/edit.html',checkIfUserIsSignedIn,checkIfUserIsAdmin,function(req,res,next){
+	fs.readFile('admin/edit.html',function(err,data){
+		res.send(data.toString());
+	});
+});
+
+
+app.get('/create.html',checkIfUserIsSignedIn,checkIfUserIsAdmin,function(req,res,next){
+	fs.readFile('admin/create.html',function(err,data){
+		res.send(data.toString());
+	});
+});
+
+app.get('/signin',function(req,res,next){
 	fs.readFile('signin.html',function(err,data){
 		res.send(data.toString());
 	});
 });
+
+app.get('auth/API/signin',function(req,res,next){
+	fs.readFile('signin.html',function(err,data){
+		res.send(data.toString());
+	});
+});
+
 app.get('/auth/signout',function(req,res,next){
 	req.session.user=null;
 	res.send('signed out');
@@ -79,6 +104,7 @@ app.post('/auth/API/signin',function(req,res,next){
 					role:users[i].role					
 				}
 				res.json({'status':1,'message':'authentication is successful'});
+	
 				return;
 			}	
 		}
@@ -121,6 +147,37 @@ app.delete('/API',function(req,res,next){
 		})
 	});
 });
+
+app.get('/API',function(req,res, next){
+	axios.get('https://jsonblob.com/api/jsonBlob/2c155f5d-7afb-11eb-8dd6-6f7957243c71').then(response =>{
+				 res.json(response.data);
+			 });
+	
+	});
+	
+	app.post('/API',function(req,res, next){
+		axios.get('https://jsonblob.com/api/jsonBlob/2c155f5d-7afb-11eb-8dd6-6f7957243c71').then(response =>{
+					 res.json(response.data.location);
+				 });
+		
+				});
+	
+	
+			
+	app.put('/API',function(req,res, next){
+		axios.get('https://jsonblob.com/api/jsonBlob/2c155f5d-7afb-11eb-8dd6-6f7957243c71').then(response =>{
+						 res.json(response.data);
+					 });
+			
+			});
+	app.delete('/API',function(req,res, next){
+		axios.get('https://jsonblob.com/api/jsonBlob/2c155f5d-7afb-11eb-8dd6-6f7957243c71').then(response =>{ res.json(response.data);
+						 });
+				
+				});
+
+				
+
 	
 app.listen(port);
 module.exports=app;
